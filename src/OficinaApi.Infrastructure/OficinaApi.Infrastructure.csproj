@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Entity Framework Core para ORM e acesso ao banco de dados SQL Server -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0" />
+    
+    <!-- Ferramentas de design para EF Core (migrations, scaffolding) -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
+    <!-- Wolverine para CQRS -->
+    <PackageReference Include="Wolverine" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Referências para as camadas de domínio e aplicação -->
+    <ProjectReference Include="..\OficinaApi.Domain\OficinaApi.Domain.csproj" />
+    <ProjectReference Include="..\OficinaApi.Application\OficinaApi.Application.csproj" />
+  </ItemGroup>
+
+</Project>

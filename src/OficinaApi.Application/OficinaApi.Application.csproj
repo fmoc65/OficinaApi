@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Wolverine para implementa��o do padr�o CQRS, permitindo handlers de commands assincronamente -->
+    
+    <!-- Maperly para mapeamento autom�tico e eficiente entre DTOs e entidades -->
+    
+    <!-- FluentValidation para valida��o de commands e DTOs -->
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="Riok.Mapperly" Version="4.3.1" />
+    <PackageReference Include="WolverineFx" Version="6.13.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Refer�ncia para as entidades de dom�nio -->
+    <ProjectReference Include="..\OficinaApi.Domain\OficinaApi.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

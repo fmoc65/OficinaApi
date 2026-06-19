@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Swagger/OpenAPI para documenta��o interativa da API -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    
+    <!-- Serilog para logging estruturado -->
+    <PackageReference Include="Serilog.AspNetCore" Version="8.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    
+    <!-- Wolverine para CQRS -->
+    <PackageReference Include="Wolverine.Http" Version="4.1.0" />
+    
+    <!-- Maperly para mapeamento -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Refer�ncias para as demais camadas -->
+    <ProjectReference Include="..\OficinaApi.Application\OficinaApi.Application.csproj" />
+    <ProjectReference Include="..\OficinaApi.Infrastructure\OficinaApi.Infrastructure.csproj" />
+    <ProjectReference Include="..\OficinaApi.Domain\OficinaApi.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

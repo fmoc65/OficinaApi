@@ -1,8 +1,9 @@
+using Microsoft.Extensions.Logging;
+using OficinaApi.Application.Features.Carros.Commands;
+using OficinaApi.Application.Features.Carros.DTOs;
+using OficinaApi.Application.Features.Carros.Mappers;
 using OficinaApi.Domain.Entities;
 using OficinaApi.Infrastructure.Repositories;
-using OficinaApi.Application.Features.Carros.Commands;
-using OficinaApi.Application.Features.Carros.Mappers;
-using OficinaApi.Application.Features.Carros.DTOs;
 
 /// <summary>
 /// Handlers para commands de Carro.
@@ -105,14 +106,14 @@ namespace OficinaApi.Application.Features.Carros.Handlers
 
             if (!foiDeletado)
             {
-                _logger.LogWarning($"Carro com ID {command.Id} não encontrado para deleção");
+                _logger.LogWarning("Carro com ID {0} não encontrado para deleção", command.Id);
                 throw new InvalidOperationException($"Carro com ID {command.Id} não encontrado");
             }
 
             // Persiste deleção
             await _carroRepository.SaveChangesAsync();
 
-            _logger.LogInformation($"Carro com ID {command.Id} foi deletado com sucesso");
+            _logger.LogInformation("Carro com ID {0} foi deletado com sucesso", command.Id);
         }
     }
 }

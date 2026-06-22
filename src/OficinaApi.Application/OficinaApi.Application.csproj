@@ -21,6 +21,7 @@
   <ItemGroup>
     <!-- Refer�ncia para as entidades de dom�nio -->
     <ProjectReference Include="..\OficinaApi.Domain\OficinaApi.Domain.csproj" />
+    <ProjectReference Include="..\OficinaApi.Infrastructure\OficinaApi.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

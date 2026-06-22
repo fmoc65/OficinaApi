@@ -1,7 +1,7 @@
-using Riok.Mapperly.Abstractions;
-using OficinaApi.Domain.Entities;
 using OficinaApi.Application.Features.Carros.Commands;
 using OficinaApi.Application.Features.Carros.DTOs;
+using OficinaApi.Domain.Entities;
+using Riok.Mapperly.Abstractions;
 
 /// <summary>
 /// Mapper para Carro.

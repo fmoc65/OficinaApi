@@ -11,7 +11,8 @@
     <!-- Entity Framework Core para ORM e acesso ao banco de dados SQL Server -->
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0" />
-    
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.9" />
+
     <!-- Ferramentas de design para EF Core (migrations, scaffolding) -->
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -19,13 +20,11 @@
     </PackageReference>
 
     <!-- Wolverine para CQRS -->
-    <PackageReference Include="Wolverine" Version="4.1.0" />
+    <PackageReference Include="WolverineFx" Version="6.13.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Referências para as camadas de domínio e aplicação -->
     <ProjectReference Include="..\OficinaApi.Domain\OficinaApi.Domain.csproj" />
-    <ProjectReference Include="..\OficinaApi.Application\OficinaApi.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,10 +3,10 @@ using OficinaApi.Domain.Entities;
 using OficinaApi.Infrastructure.Data;
 
 /// <summary>
-/// Implementação genérica do Repository para qualquer entidade.
-/// Fornece operações CRUD padrão usando Entity Framework Core.
-/// Aplicamos SOLID (Dependency Inversion) - depende da abstração (DbContext) injetada.
-/// Esta classe implementa o padrão Repository, abstraindo acesso ao banco de dados.
+/// ImplementaÃ§Ã£o genÃ©rica do Repository para qualquer entidade.
+/// Fornece operaÃ§Ãµes CRUD padrÃ£o usando Entity Framework Core.
+/// Aplicamos SOLID (Dependency Inversion) - depende da abstraÃ§Ã£o (DbContext) injetada.
+/// Esta classe implementa o padrÃ£o Repository, abstraindo acesso ao banco de dados.
 /// </summary>
 namespace OficinaApi.Infrastructure.Repositories
 {
@@ -14,13 +14,13 @@ namespace OficinaApi.Infrastructure.Repositories
     {
         /// <summary>
         /// DbContext injetado via construtor.
-        /// Utilizamos injeção de dependência para facilitar testes e flexibilidade.
+        /// Utilizamos injeÃ§Ã£o de dependÃªncia para facilitar testes e flexibilidade.
         /// </summary>
         protected readonly OficinaDbContext _context;
 
         /// <summary>
-        /// DbSet da entidade para operações CRUD.
-        /// Acessível aos repositórios derivados.
+        /// DbSet da entidade para operaÃ§Ãµes CRUD.
+        /// AcessÃ­vel aos repositÃ³rios derivados.
         /// </summary>
         protected readonly DbSet<TEntity> _dbSet;
 
@@ -29,26 +29,26 @@ namespace OficinaApi.Infrastructure.Repositories
         /// </summary>
         public Repository(OficinaDbContext context)
         {
-            // Injeção de dependência do DbContext
+            // InjeÃ§Ã£o de dependÃªncia do DbContext
             // Permite que o repository acesse o banco de dados
             _context = context;
-            // Obtém o DbSet para a entidade genérica
+            // ObtÃ©m o DbSet para a entidade genÃ©rica
             _dbSet = _context.Set<TEntity>();
         }
 
         /// <summary>
         /// Busca uma entidade por Id de forma assincronamente.
-        /// Operação assincronamente permite que threads não fiquem bloqueadas aguardando banco.
+        /// OperaÃ§Ã£o assincronamente permite que threads nÃ£o fiquem bloqueadas aguardando banco.
         /// </summary>
         public async Task<TEntity?> GetByIdAsync(TId id)
         {
-            // FindAsync usa cache do DbContext e é otimizada para busca por chave primária
+            // FindAsync usa cache do DbContext e Ã© otimizada para busca por chave primÃ¡ria
             return await _dbSet.FindAsync(id);
         }
 
         /// <summary>
         /// Retorna todas as entidades assincronamente.
-        /// Sem include de relações para evitar N+1 queries.
+        /// Sem include de relaÃ§Ãµes para evitar N+1 queries.
         /// </summary>
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
@@ -58,19 +58,19 @@ namespace OficinaApi.Infrastructure.Repositories
 
         /// <summary>
         /// Adiciona uma nova entidade.
-        /// Não persiste no banco até SaveChangesAsync ser chamado.
+        /// NÃ£o persiste no banco atÃ© SaveChangesAsync ser chamado.
         /// </summary>
         public async Task<TEntity> AddAsync(TEntity entity)
         {
-            // Adiciona à memória do context
+            // Adiciona Ã  memÃ³ria do context
             await _dbSet.AddAsync(entity);
-            // Retorna a entidade para que possa ser usada após a adição
+            // Retorna a entidade para que possa ser usada apÃ³s a adiÃ§Ã£o
             return entity;
         }
 
         /// <summary>
         /// Atualiza uma entidade existente.
-        /// O DbContext rastreia mudanças automaticamente.
+        /// O DbContext rastreia mudanÃ§as automaticamente.
         /// </summary>
         public async Task<TEntity> UpdateAsync(TEntity entity)
         {
@@ -90,7 +90,7 @@ namespace OficinaApi.Infrastructure.Repositories
             
             if (entity == null)
             {
-                // Não encontrou, retorna falso
+                // NÃ£o encontrou, retorna falso
                 return false;
             }
 
@@ -105,18 +105,18 @@ namespace OficinaApi.Infrastructure.Repositories
         /// </summary>
         public async Task<bool> ExistsAsync(TId id)
         {
-            // Qualquer método que verifica existência sem carregar dados completos
+            // Qualquer mÃ©todo que verifica existÃªncia sem carregar dados completos
             return await _dbSet.FindAsync(id) != null;
         }
 
         /// <summary>
-        /// Salva as mudanças no banco de dados de forma assincronamente.
-        /// Essencial após operações de modificação (Add, Update, Delete).
-        /// Retorna o número de linhas afetadas.
+        /// Salva as mudanÃ§as no banco de dados de forma assincronamente.
+        /// Essencial apÃ³s operaÃ§Ãµes de modificaÃ§Ã£o (Add, Update, Delete).
+        /// Retorna o nÃºmero de linhas afetadas.
         /// </summary>
         public async Task<int> SaveChangesAsync()
         {
-            // SaveChangesAsync executa todas as operações pendentes no banco
+            // SaveChangesAsync executa todas as operaÃ§Ãµes pendentes no banco
             // Retorna quantas linhas foram afetadas
             return await _context.SaveChangesAsync();
         }

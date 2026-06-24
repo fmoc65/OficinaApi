@@ -1,6 +1,7 @@
 using OficinaApi.Infrastructure.Repositories;
 using OficinaApi.Application.Features.Clientes.Mappers;
 using OficinaApi.Application.Features.Clientes.DTOs;
+using OficinaApi.Application.Features.Clientes.Validators;
 
 /// <summary>
 /// Handler para o comando CreateClienteCommand.

@@ -4,7 +4,7 @@
 /// Cada command representa uma intenção de modificar o estado da aplicação.
 /// Records garantem imutabilidade - importante para segurança e rastreamento.
 /// </summary>
-namespace OficinaApi.Application.Features.Clientes.Commands
+namespace OficinaApi.Application.Features.Clientes.Validators
 {
     public record CreateClienteCommand(
         /// <summary>
